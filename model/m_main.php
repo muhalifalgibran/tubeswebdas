@@ -109,7 +109,9 @@ class m_main extends model{
       public function pratin(){
         $pratinjau=$_GET['namaProperti'];
 
-        $query=$this->conn->query("SELECT");
+        $query=$this->conn->query("SELECT rekomendasi, jenisHomestay,nama_properti,aksesibilitas,deskripsi,
+                                    hal_sekitar,tanggalCheckin,ranjang, alamat
+                                    FROM deskripsi JOIN ");
       }
 
       public function cari(){

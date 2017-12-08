@@ -1,0 +1,16 @@
+kenyamanan(fasilitas)--> rekomendasi,deskripsi
+jenishomestay-->jenisHomestay,homestay
+namaproperti-->nama_properti,deskripsi
+info penting-->aksesibilitas
+deskripsi-->deskripsi,deskripsi
+tempat menarik disekitar-->hal_sekitar,deskripsi
+tanggalcheckin-->tanggalCheckin,deskripsi
+BED-->ranjang,profil
+alamat->alamat->profil
+
+
+
+SELECT rekomendasi, jenisHomestay,nama_properti,aksesibilitas,deskripsi,
+                                    hal_sekitar,tanggalCheckin,ranjang, alamat 
+                                    FROM deskripsi JOIN profil USING(id_profil)
+				    JOIN homestay USING(id_homestay);

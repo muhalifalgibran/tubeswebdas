@@ -33,7 +33,6 @@ class controller{
         header('location: /webdastub/view/loginpemesan.html');
       }else {
         ?><script>alert('Harap semua diisi dengan benar')</script><?php
-
       }
     }
 
@@ -56,7 +55,7 @@ class controller{
       }
     }
     public function pratinjau(){
-      $pratinjau=$this->model->pratin();
+      $result=$this->model->pratin();
     }
     public function inputDataHomestay(){
         $oii=$this->model->deskripsiHomestay();
