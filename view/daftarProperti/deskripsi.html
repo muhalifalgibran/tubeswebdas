@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <style>
+  body {
+      font-family: "Lato", sans-serif;
+  }
+
+  .sidenav {
+
+    height: 100%;
+    width: 150px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(166, 136, 172, 0.42);
+    overflow-x: hidden;
+    padding-top: 20px;
+    padding-left: 20px;
+  }
+  .active{
+      background-color: rgba(0, 158, 247, 0.7)
+  }
+  .sidenav a {
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #4b0909;
+      display: block;
+  }
+
+  .sidenav a:hover {
+
+  }
+
+  .main {
+      margin-left: 160px; /* Same as the width of the sidenav */
+      font-size: 28px; /* Increased text to enable scrolling */
+      padding: 0px 10px;
+  }
+
+  @media screen and (max-height: 450px) {
+      .sidenav {padding-top: 15px;}
+      .sidenav a {font-size: 18px;}
+  }
+  </style>
+</head>
+<body>
+  <div class="sidenav">
+    <a>Dasar</a>
+    <a>Lokasi</a>
+    <a class="active">Deskripsi</a>
+    <a >Fasilitas</a>
+  </div>
+<div class="container1">
+  <div class="progress">
+    <div class="progress-bar" role="progressbar"  style="width:75%">
+    </div>
+</div>
+  <h1 align="center" class="buatan"><b>Deskripsi</b></h1>
+  <form action="http://localhost/webdastub/controller/controller.php?fungsi=inputDataHomestay" method="post">
+        <div class="panel panel-default">
+          <label  class="panel-heading">Nama Properti</label>
+          <input type="text" class="form-control" id="pwd" placeholder="Ini yang akan dilihat pertama kali oleh pemesan" name="nama_properti">
+        </div>
+        <div class="panel panel-default">
+          <label  class="panel-heading">Harga Properti</label>
+          <input type="Number" class="form-control" id="pwd" placeholder="Harga Properti Anda" name="harga">
+        </div>
+    <div class="panel panel-default">
+      <label for="alamat" class="panel-heading">Deskripsikan Properti Anda</label>
+      <div class="form-group">
+          <textarea class="form-control" rows="5" id="comment" name="deskPro" placeholder="Contoh:
+            - 5 menit berjalan kaki
+            - Cocok untuk keluarga
+            - Tidak boleh bawa minuman keras
+          "></textarea>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <label for="alamat" class="panel-heading">Hal Disekitar</label>
+      <div class="form-group">
+          <textarea class="form-control" rows="4" id="comment" name="hal_sekitar" placeholder="Contoh:
+            - Dekat dengan Air Terjun
+            - Dekat Dengan SPBU
+          "></textarea>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <label for="alamat" class="panel-heading">Tanggal CheckIn</label>
+      <div class="form-group">
+        <input type="date" class="form-control" id="comment" name="checkin">
+      </div>
+    </div>
+
+    <center><button type="submit" class="btn btn-dark btn-lg js-scroll-trigger" value="kirim" name="lanjut3">Lanjut</button><br>
+    <br>
+    <br>
+
+  </form>
+  </div>
+
+</body>
+</html>
