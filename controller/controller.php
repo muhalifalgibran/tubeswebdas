@@ -35,7 +35,6 @@ class controller{
         ?><script>alert('Harap semua diisi dengan benar')</script><?php
       }
     }
-
     public function loginAplikasi(){
       $result=$this->model->login();
       if ($result>0) {
@@ -67,7 +66,12 @@ class controller{
             ?><script>alert('Harap semua diisi dengan benar');window.history.go(-1)</script><?php
         }
     }
+    public function admin(){
+      header('Location: ../view/admin/login.html');
+    }
 }
+
+
 
 $controller = new controller();
 
