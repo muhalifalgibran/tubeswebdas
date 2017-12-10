@@ -108,7 +108,6 @@ class m_main extends model{
 
       public function pratin(){
         $pratinjau=$_GET['namaProperti'];
-
         $query=$this->conn->query("SELECT rekomendasi, jenisHomestay,nama_properti,aksesibilitas,deskripsi,
                                     hal_sekitar,tanggalCheckin,ranjang, alamat
                                     FROM deskripsi JOIN ");
@@ -116,7 +115,7 @@ class m_main extends model{
 
       public function cari(){
         $cari = $_POST['search'];
-        return $this->conn->query("SELECT nama_properti, deskripsi, harga
+        return $this->conn->query("SELECT id_deskripsi,nama_properti, deskripsi, harga
                                   FROM deskripsi JOIN profil USING(id_profil)
                                   where kota like '%$cari%'
                                   group by nama_properti");
@@ -124,12 +123,17 @@ class m_main extends model{
       public function loginPemesan(){
         $nama=$_POST['nama'];
         $pass=$_POST['password'];
-        $pemesan=$this->conn->query("SELECT nama, password,id_pemesan from pemesan where nama='$nama' and password='$pass'");
-        $result1=mysqli_num_rows($pemesan);
-
-        while ($row = $pemesan->fetch_assoc()) {
-          $_SESSION['id_pemesan']=$row['id_pemesan'];
+        if (($nama=="" && $pass=="") || $nama=="" || $pass=="" ) {
+          
+            header('Location: ../view/loginpemesan.html');
+        } else {
+          $pemesan=$this->conn->query("SELECT nama, password,id_pemesan from pemesan where nama='$nama' and password='$pass'");
+          $result1=mysqli_num_rows($pemesan);
+          while ($row = $pemesan->fetch_assoc()) {
+            $_SESSION['id_pemesan']=$row['id_pemesan'];
+          }
         }
+
         return $result1;
       }
 
