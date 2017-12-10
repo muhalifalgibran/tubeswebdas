@@ -93,8 +93,8 @@ class m_main extends model{
          }
        }
 
-       public function pemesan(){
-         if (!empty($_POST['nama'] && $_POST['alamat'])) {
+       public function pemesanan(){
+         if (!empty($_POST['nama'])) {
            $noidentitas = $_POST['noId'];
            $nama = $_POST['nama'];
            $alamat = $_POST['alamat'];
@@ -190,6 +190,16 @@ class m_main extends model{
       }
 
     }
+
+    public function feedback1(){
+        $sdm=$_POST['sdm'];
+        $idhome=$_POST['id'];
+        $kd=$this->gen->generate_uuid();
+
+          return $fd=$this->conn->query("INSERT INTO feedback(kdFeedback,idHomestay,deskripsiFeedback)
+              VALUES('$kd','$idhome','$sdm')");
+
+      }
 
     public function login(){
       $nama=$_POST['nama'];

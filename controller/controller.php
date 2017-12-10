@@ -5,6 +5,7 @@ class controller{
     public function __construct(){
       $this->model = new m_main();
     }
+
     public function regisPenyedia(){
       $yoo=$this->model->tambahRegis();
       if ($yoo) {
@@ -28,12 +29,21 @@ class controller{
       }
     }
     public function pemesan(){
-      $op=$this->model->pemesan();
+      $op=$this->model->pemesanan();
       if ($op) {
         header('location: /webdastub/view/loginpemesan.html');
       }else {
-        ?><script>alert('Harap semua diisi dengan benar')</script><?php
+        ?><script>alert('Harap semua diisi dengan benar');window.history.go(-1)</script><?php
       }
+    }
+    public function feedback(){
+      $fd=$this->model->feedback1();
+        if ($fd){
+          echo "berhasil";
+        }
+        else{
+          echo "gagal";
+        }
     }
     public function loginAplikasi(){
       $result=$this->model->login();
