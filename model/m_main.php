@@ -110,7 +110,9 @@ class m_main extends model{
         $pratinjau=$_GET['namaProperti'];
         $query=$this->conn->query("SELECT rekomendasi, jenisHomestay,nama_properti,aksesibilitas,deskripsi,
                                     hal_sekitar,tanggalCheckin,ranjang, alamat
-                                    FROM deskripsi JOIN ");
+                                    FROM deskripsi JOIN profil USING(id_profil)
+				                            JOIN homestay USING(id_homestay)
+                                    WHERE id_deskripsi='$pratinjau'");
       }
 
       public function cari(){
@@ -124,7 +126,6 @@ class m_main extends model{
         $nama=$_POST['nama'];
         $pass=$_POST['password'];
         if (($nama=="" && $pass=="") || $nama=="" || $pass=="" ) {
-          
             header('Location: ../view/loginpemesan.html');
         } else {
           $pemesan=$this->conn->query("SELECT nama, password,id_pemesan from pemesan where nama='$nama' and password='$pass'");
@@ -133,7 +134,6 @@ class m_main extends model{
             $_SESSION['id_pemesan']=$row['id_pemesan'];
           }
         }
-
         return $result1;
       }
 

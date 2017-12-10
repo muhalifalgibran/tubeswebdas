@@ -55,13 +55,13 @@ class controller{
     }
     public function pratinjau(){
       $result=$this->model->pratin();
+      include_once '../view/pratinjau/pratinjau.php';
     }
     public function inputDataHomestay(){
         $oii=$this->model->deskripsiHomestay();
         if ($oii>0) {
             header("Location: ../view/daftarProperti/dasar.html");
         //session_start();
-
         }else {
             ?><script>alert('Harap semua diisi dengan benar');window.history.go(-1)</script><?php
         }

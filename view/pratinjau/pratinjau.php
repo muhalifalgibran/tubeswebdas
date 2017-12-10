@@ -23,25 +23,25 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#">Start Bootstrap</a>
+        <a class="navbar-brand" >Start Bootstrap</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home
+              <a class="nav-link" >Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" >About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Services</a>
+              <a class="nav-link" >Services</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
+              <a class="nav-link" >Contact</a>
             </li>
           </ul>
         </div>
@@ -51,97 +51,84 @@
       <div class="row">
 
         <div class="col-lg-9">
-          <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
-            <ol class="carousel-indicators">
-              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner" role="listbox">
-              <div class="carousel-item active">
-                <img class="d-block img-fluid" src="../view/index/img/portfolio-2.jpg" alt="First slide">
-              </div>
-              <div class="carousel-item">
-                <img class="d-block img-fluid" src="../view/index/img/4.jpg" alt="Second slide">
-              </div>
-              <div class="carousel-item">
-                <img class="d-block img-fluid" src="../view/index/img/7.jpg" alt="Third slide">
-              </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
           <div class="row">
               <div class="container">
               <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+                  <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                  </ol>
+                  <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active">
+                      <img class="d-block img-fluid" src="../index/img/portfolio-2.jpg" alt="First slide">
+                    </div>
+                    <div class="carousel-item">
+                      <img class="d-block img-fluid" src="../index/img/4.jpg" alt="Second slide">
+                    </div>
+                    <div class="carousel-item">
+                      <img class="d-block img-fluid" src="../index/img/7.jpg" alt="Third slide">
+                    </div>
+                  </div>
+                </div>
                 <div class="card-body">
                   <h4 class="card-title">
-                    <a href="#">Kenyamanan Fasilitas</a>
+                    <a>Kenyamanan Fasilitas</a>
                   </h4>
-                  <h5>$24.99</h5>
                   <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">
-                    <a href="#">Jenis HomeStay</a>
+                    <a >Jenis HomeStay</a>
                   </h4>
-                  <h5>$24.99</h5>
                   <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">
-                    <a href="#">Nama Properti</a>
+                    <a >Nama Properti</a>
                   </h4>
-                  <h5>$24.99</h5>
                   <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">
-                    <a href="#">Info Penting</a>
+                    <a >Info Penting</a>
                   </h4>
-                  <h5>$24.99</h5>
+
                   <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">
-                    <a href="#">Deskripsi</a>
+                    <a >Deskripsi</a>
                   </h4>
-                  <h5>$24.99</h5>
+
                   <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">
-                    <a href="#">Tempat Menarik Disekitar</a>
+                    <a >Tempat Menarik Disekitar</a>
                   </h4>
-                  <h5>$24.99</h5>
+
                   <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">
-                    <a href="#">Tanggal Check In</a>
+                    <a >Tanggal Check In</a>
                   </h4>
-                  <h5>$24.99</h5>
+
                   <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">
-                    <a href="#">BED</a>
+                    <a >BED</a>
                   </h4>
-                  <h5>$24.99</h5>
+
                   <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">
-                    <a href="#">Alamat</a>
+                    <a >Alamat</a>
                   </h4>
-                  <h5>$24.99</h5>
                   <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
                 </div>
                 <div class="card-footer">
