@@ -79,6 +79,17 @@ class controller{
       $sp = $this->model->selectpesanan();
       include_once '../view/admin/tables.php';
     }
+
+    public function lihatDatPenyedia(){
+      $ldp=$this->model->ldp();
+        include_once '../view/admin/datapenyedia.php';
+    }
+
+    public function lihatDatPemesan(){
+      $dp=$this->model->dp();
+        include_once '../view/admin/datapemesan.php';
+    }
+
     public function bayar(){
       $mod=$this->model->bayarStruk();
       include_once '../view/rinda/strukpembayaran.php';
