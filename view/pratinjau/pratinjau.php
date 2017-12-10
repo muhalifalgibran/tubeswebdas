@@ -62,75 +62,70 @@
                   </ol>
                   <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active">
-                      <img class="d-block img-fluid" src="../index/img/portfolio-2.jpg" alt="First slide">
-                    </div>
-                    <div class="carousel-item">
-                      <img class="d-block img-fluid" src="../index/img/4.jpg" alt="Second slide">
-                    </div>
-                    <div class="carousel-item">
-                      <img class="d-block img-fluid" src="../index/img/7.jpg" alt="Third slide">
+                      <img class="d-block img-fluid" src="img/portfolio-2.jpg" alt="First slide">
                     </div>
                   </div>
                 </div>
+              <?php  while ($ini= $hasil->fetch_assoc()) {  ?>
                 <div class="card-body">
                   <h4 class="card-title">
                     <a>Kenyamanan Fasilitas</a>
                   </h4>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                  <p class="card-text"><?php echo $ini['rekomendasi'] ?></p>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">
                     <a >Jenis HomeStay</a>
                   </h4>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                  <p class="card-text"><?php echo $ini['jenisHomestay'] ?></p>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">
                     <a >Nama Properti</a>
                   </h4>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                  <p class="card-text"><?php echo $ini['nama_properti'] ?></p>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">
                     <a >Info Penting</a>
                   </h4>
 
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                  <p class="card-text"><?php echo $ini['aksesibilitas']?></p>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">
                     <a >Deskripsi</a>
                   </h4>
-
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                  <p class="card-text"><?php echo $ini['deskripsi'] ?></p>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">
                     <a >Tempat Menarik Disekitar</a>
                   </h4>
 
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                  <p class="card-text"><?php echo $ini['hal_sekitar'] ?></p>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">
                     <a >Tanggal Check In</a>
                   </h4>
 
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                  <p class="card-text"><?php echo $ini['tanggalCheckin'] ?></p>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">
                     <a >BED</a>
                   </h4>
 
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                  <p class="card-text"><?php echo $ini['ranjang'] ?></p>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">
                     <a >Alamat</a>
                   </h4>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                  <p class="card-text"><?php echo $ini['alamat'] ?></p>
                 </div>
+              <?php } ?>
                 <div class="card-footer">
                   <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
                 </div>
