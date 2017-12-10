@@ -65,16 +65,42 @@ class controller{
     }
     public function pratinjau(){
       $result=$this->model->pratin();
+      $gambar=$this->model->tampilGambar();
+      include_once '../view/pratinjau/pratinjau.php';
+    }
+
+    public function lihatPesanan(){
+      
+    }
+    public function bayar(){
+      $mod=$this->model->bayarStruk();
+      include_once '../view/rinda/strukpembayaran.php';
+    }
+    function konfirmBayar(){
+      $nyo=$this->model->pembayaran();
+      include_once'../view/rinda/konfirmPembayaran.php';
     }
     public function inputDataHomestay(){
         $oii=$this->model->deskripsiHomestay();
         if ($oii>0) {
             header("Location: ../view/daftarProperti/dasar.html");
         //session_start();
-
-        }else {
+        }else{
             ?><script>alert('Harap semua diisi dengan benar');window.history.go(-1)</script><?php
         }
+    }
+    public function loginAdmin(){
+      if ($_POST['name']=="admin"&&$_POST['pwd']=="admin") {
+        $this->model->tabelPendaftar();
+        header('Location: ../view/admin/index.html');
+      } else {
+        ?><script>alert('Salah username dan password');window.history.go(-1)</script><?php
+      }
+    }
+
+    public function lunas(){
+      $this->model->bayar();
+        header('Location: ../view/rinda/terimakasih.html');
     }
     public function admin(){
       header('Location: ../view/admin/login.html');

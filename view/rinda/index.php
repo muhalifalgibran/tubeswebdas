@@ -65,7 +65,7 @@
             </ol>
             <div class="carousel-inner" role="listbox">
               <div class="carousel-item active">
-                <img class="d-block img-fluid" src="../view/index/img/portfolio-2.jpg" alt="First slide">
+                <img class="d-block img-fluid" src="../view/index/img/Portfolio-2.jpg" alt="First slide">
               </div>
               <div class="carousel-item">
                 <img class="d-block img-fluid" src="../view/index/img/4.jpg" alt="Second slide">
@@ -95,12 +95,18 @@
                   </h4>
                   <h5>Rp.<?php echo $row['harga']?></h5>
                   <p class="card-text"><?php echo $row['deskripsi']?></p>
+                  <form class="" action="" method="post">
+                        <td><input type="submit" name="Sewa" value="Kirim" class="btn btn-primary"></td>
+                  </form>
                 </div>
                 <div class="card-footer">
                   <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
                 </div>
+
               </div>
+
             </div>
+
           <?php } ?>
 
           </div>

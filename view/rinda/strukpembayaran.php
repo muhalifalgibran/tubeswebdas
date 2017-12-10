@@ -29,8 +29,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
+                        <?php while ($row=$mod->fetch_assoc()) { ?>
             <li class="nav-item">
-
+              <a class="nav-link" href="http://localhost/webdastub/controller/controller.php?fungsi=konfirmBayar&id=<?php echo $_SESSION['kodeBayar']?>&hrg=<?php echo $row['harga'] ?>">Konfirmasi Pembayaran>></a>
             </li>
           </ul>
         </div>
@@ -50,19 +51,44 @@
 
             <table>
             <tr>
+              <td>Nama Pemesan </td>
+              <td>:</td>
+              <td><?php echo $_SESSION['namaPemesan']; ?></td>
+            </tr>
+            <tr>
+              <td>Kode Pesanan</td>
+              <td>:</td>
+              <td><?php echo $_SESSION['kodeBayar']; ?></td>
+            </tr>
+
+            <tr>
+              <td>Pesanan</td>
+              <td>:</td>
+              <td><?php echo $row['nama_properti']; ?></td>
+            </tr>
+            <tr>
+              <td>Jumlah Bayar </td>
+              <td>: </td>
+              <td>Rp.<?php echo $row['harga']; ?></td>
+            </tr>
+            <?php } ?>
+            <tr>
+
               <td>QR CODE  :</td>
-              <td><img src="qrcode.png"></img></td>
-
-              <formaction="http://localhost/webdastub/controller/controller.php?fungsi=lunas&id=<?php echo $_GET['idBayar']; ?>" method="post" enctype="multipart/form-data">
-                <td><input type="file" name="struk"></td>
-                </tr>
-                <tr>
-                <td><input type="submit" name="kirim" value="Kirim" class="btn btn-primary"></td>
-                </tr>
-              </form>
-
+              <td><img src="../view/rinda/qrcode.png"></img></td>
+            </tr>
             </table>
+            <p>Tata cara pembayaran ATM</p>
+            <ul>
+              <li>Kode BANK abc adalah 001</li>
+              <li>Masukkan kode bayar diatas</li>
+              <li>Masukkan Nominal Pembayaran</li>
+            </ul>
 
+            <b>Silahkan bayar dalam waktu kurang dari 24 jam</b>
+            <form class="" action="" method="post">
+
+            </form>
             <!-- <div class="col-lg-4 col-md-6 mb-4">
 
               <div class="card h-100">

@@ -115,9 +115,66 @@ class m_main extends model{
 
       public function pratin(){
         $pratinjau=$_GET['namaProperti'];
-        $query=$this->conn->query("SELECT rekomendasi, jenisHomestay,nama_properti,aksesibilitas,deskripsi,
+        $query=$this->conn->query("SELECT id_homestay,id_deskripsi,rekomendasi, jenisHomestay,nama_properti,aksesibilitas,deskripsi,
                                     hal_sekitar,tanggalCheckin,ranjang, alamat
-                                    FROM deskripsi JOIN ");
+                                    FROM deskripsi JOIN profil USING(id_profil)
+				                            JOIN homestay USING(id_homestay)
+                                    WHERE id_deskripsi='$pratinjau'");
+                                    return $query;
+            while ($row = $query->fetch_assoc()){
+              $_SESSION['id_homestay']=$row['id_homestay'];
+            }
+
+
+      }
+      public function tabelPendaftar(){
+
+      }
+      public function bayar(){
+        $idtransaksi=$_GET['id'];
+        $gambar = $_FILES['struk']['name'];
+        $tgambar = $_FILES['struk']['tmp_name'];
+        $sfoto = $gambar;
+        $tfoto = $tgambar;
+        $file_upload=1;
+        $dir = "../view/rinda/struk/".$gambar;
+      //  $loc=$dir.$nfoto;
+        if($file_upload==1){
+            move_uploaded_file($tgambar, $dir);
+            $simpan=$this->conn->query("UPDATE transaksi SET gambar='$gambar' WHERE id_transaksi='$idtransaksi'");
+            // mysqli_query($conn1,"INSERT INTO gambar(id_gambar, gambar, id_deskripsi)
+            //  VALUES ('$pkgambar','$nfoto','$pkdeskripsi')");
+          }else{
+            echo '<script>alert("Gagal upload");</script>';
+          }
+      }
+      public function bayarStruk(){
+        $id=$_GET['id'];
+        //$_SESSION['namaPemesan'];
+        $_SESSION['kodeBayar']=$this->gen->generate_uuid();
+        $yu=$this->conn->query("SELECT id_homestay,id_deskripsi,nama_properti, harga FROM deskripsi
+                                JOIN profil USING(id_profil)
+                                JOIN homestay USING(id_homestay)
+                                where id_deskripsi='$id'");
+        return $yu;
+      }
+      public function pembayaran(){
+          $pk=$_GET['id'];
+          $harga=$_GET['hrg'];
+          $idhomestay=$_SESSION['id_homestay'];
+          $idpemesan=$_SESSION['id_pemesan'];
+          $this->conn->query("INSERT INTO transaksi(id_transaksi,  harga,status, idPemesan, idHomestay) VALUES ('$pk','$harga','PENDING','$idpemesan','$idhomestay')");
+
+          return $this->conn->query("SELECT id_transaksi FROM transaksi where id_transaksi='$pk'");
+
+      }
+
+      public function tampilGambar(){
+        $pratinjau=$_GET['namaProperti'];
+        $sql=$this->conn->query("SELECT gambar from gambar
+                                WHERE id_deskripsi='$pratinjau'");
+
+        return $sql;
       }
 
       public function cari(){
@@ -136,12 +193,17 @@ class m_main extends model{
         }
         else {
           $pemesan=$this->conn->query("SELECT nama, password,id_pemesan from pemesan where nama='$nama' and password='$pass'");
+
+            header('Location: ../view/loginpemesan.html');
+        } else {
+          $pemesan=$this->conn->query("SELECT id_pemesan,nama, password,id_pemesan from pemesan where nama='$nama' and password='$pass'");
+
           $result1=mysqli_num_rows($pemesan);
-          while ($row = $pemesan->fetch_assoc()) {
+          $_SESSION['namaPemesan']=$nama;
+          while ($row = $pemesan->fetch_assoc()){
             $_SESSION['id_pemesan']=$row['id_pemesan'];
           }
         }
-
         return $result1;
       }
 
@@ -160,7 +222,7 @@ class m_main extends model{
             move_uploaded_file($tfoto, $dir);
             $simpan=$this->conn->query("INSERT INTO gambar(id_gambar, gambar, id_deskripsi)
              VALUES ('$pkgambar','$nfoto','$pkdeskripsi')");
-            // mysqli_query($conn1,"INSERT INTO `gambar`(`id_gambar`, `gambar`, `id_deskripsi`)
+            // mysqli_query($conn1,"INSERT INTO gambar(id_gambar, gambar, id_deskripsi)
             //  VALUES ('$pkgambar','$nfoto','$pkdeskripsi')");
           }else{
             echo '<script>alert("Gagal upload");</script>';
@@ -205,6 +267,7 @@ class m_main extends model{
       $nama=$_POST['nama'];
       $pass=$_POST['password'];
       $penyedia=$this->conn->query("SELECT nama, password,id_penyedia from penyedia where nama='$nama' and password='$pass'");
+
       $result=mysqli_num_rows($penyedia);
       session_start();
       while ($row = $penyedia->fetch_assoc()) {
