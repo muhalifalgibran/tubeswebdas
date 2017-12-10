@@ -188,25 +188,20 @@ class m_main extends model{
         $nama=$_POST['nama'];
         $pass=$_POST['password'];
         if (($nama=="" && $pass=="") || $nama=="" || $pass=="" ) {
-
             header('Location: ../view/loginpemesan.html');
         }
         else {
           $pemesan=$this->conn->query("SELECT nama, password,id_pemesan from pemesan where nama='$nama' and password='$pass'");
-
             header('Location: ../view/loginpemesan.html');
-        } else {
-          $pemesan=$this->conn->query("SELECT id_pemesan,nama, password,id_pemesan from pemesan where nama='$nama' and password='$pass'");
+        }
 
           $result1=mysqli_num_rows($pemesan);
           $_SESSION['namaPemesan']=$nama;
           while ($row = $pemesan->fetch_assoc()){
             $_SESSION['id_pemesan']=$row['id_pemesan'];
           }
-        }
         return $result1;
       }
-
     public function upload($nfoto,$sfoto,$tfoto,$pkgambar,$pkdeskripsi){
       //$url = $error; // url di mana akan di kembalikan jika gagal upload
 
