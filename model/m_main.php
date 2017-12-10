@@ -94,17 +94,24 @@ class m_main extends model{
        }
 
        public function pemesan(){
-         $noidentitas = $_POST['noId'];
-         $nama = $_POST['nama'];
-         $alamat = $_POST['alamat'];
-         $umur = $_POST['umur'];
-         $password = $_POST['pwd'];
-         $oi=$this->gen->generate_uuid();
+         if (!empty($_POST['nama'] && $_POST['alamat'])) {
+           $noidentitas = $_POST['noId'];
+           $nama = $_POST['nama'];
+           $alamat = $_POST['alamat'];
+           $umur = $_POST['umur'];
+           $password = $_POST['pwd'];
+           $oi=$this->gen->generate_uuid();
 
-         $bah=$this->conn->query("INSERT INTO pemesan(id_pemesan,noidentitas,nama,alamat,umur,password)
-             VALUES('$oi', '$noidentitas', '$nama','$alamat','$umur','$password')");
-        return $bah;
-      }
+           if (strlen($_POST["pwd"]) <= 8) {
+              $passwordErr = "harus 8 karakter";
+            }
+            else{
+            return $this->conn->query("INSERT INTO pemesan(id_pemesan,noidentitas,nama,alamat,umur,password)
+                   VALUES('$oi', '$noidentitas', '$nama','$alamat','$umur','$password')");
+                      header ('location:../view/loginPemesan.html');
+            }
+         }
+       }
 
       public function pratin(){
         $pratinjau=$_GET['namaProperti'];
@@ -124,9 +131,10 @@ class m_main extends model{
         $nama=$_POST['nama'];
         $pass=$_POST['password'];
         if (($nama=="" && $pass=="") || $nama=="" || $pass=="" ) {
-          
+
             header('Location: ../view/loginpemesan.html');
-        } else {
+        }
+        else {
           $pemesan=$this->conn->query("SELECT nama, password,id_pemesan from pemesan where nama='$nama' and password='$pass'");
           $result1=mysqli_num_rows($pemesan);
           while ($row = $pemesan->fetch_assoc()) {
@@ -164,15 +172,21 @@ class m_main extends model{
     //nfoto = nama foto, sfoto=size foto,tfoto = temporary foto, dir = folder penyimpanan gambar
 
     public function tambahRegis(){
-      if (!empty($_POST['nama'])) {
+      if (!empty($_POST['nama']&&$_POST['alamat'])) {
         $nama = $_POST['nama'];
         $alamat= $_POST['alamat'];
         $noId = $_POST['noId'];
         $password = $_POST['pwd'];
         $pk=$this->gen->generate_uuid();
 
-        return $op=$this->conn->query("INSERT INTO penyedia(id_penyedia,nama,alamat,no_identitas,password)
-            VALUES('$pk', '$nama', '$alamat', '$noId','$password')");
+        if (strlen($_POST["pwd"]) <= 8) {
+           $passwordErr = "harus 8 karakter";
+         }
+        else{
+          return $op=$this->conn->query("INSERT INTO penyedia(id_penyedia,nama,alamat,no_identitas,password)
+              VALUES('$pk', '$nama', '$alamat', '$noId','$password')");
+          header ('location:../view/loginpenyedia.html');
+        }
       }
 
     }
