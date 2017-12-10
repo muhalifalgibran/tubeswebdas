@@ -68,9 +68,16 @@ class controller{
       $gambar=$this->model->tampilGambar();
       include_once '../view/pratinjau/pratinjau.php';
     }
+    public function update(){
+      $up = $this->model->updatepemesanan();
+      if($up){
+      ?><script>alert('Berhasil Upload');window.history.go(-1)</script><?php
+      }
+    }
 
     public function lihatPesanan(){
-      
+      $sp = $this->model->selectpesanan();
+      include_once '../view/admin/tables.php';
     }
     public function bayar(){
       $mod=$this->model->bayarStruk();
@@ -78,7 +85,7 @@ class controller{
     }
     function konfirmBayar(){
       $nyo=$this->model->pembayaran();
-      include_once'../view/rinda/konfirmPembayaran.php';
+      include_once '../view/rinda/konfirmPembayaran.php';
     }
     public function inputDataHomestay(){
         $oii=$this->model->deskripsiHomestay();

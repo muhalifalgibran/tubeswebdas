@@ -17,7 +17,10 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
 </head>
-
+<style>
+  .gambar{width ="100";
+      height = "100"}
+</style>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
@@ -28,7 +31,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="../view/admin/index.html">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Dashboard</span>
           </a>
@@ -157,6 +160,7 @@
                   <th>status</th>
                   <th>id pemesan</th>
                   <th>id homestay</th>
+                  <th>edit</th>
                 </tr>
               </thead>
               <tfoot>
@@ -171,14 +175,21 @@
                 </tr>
               </tfoot>
               <tbody>
+                <?php while($row = $sp->fetch_assoc()){
+                ?>
                 <tr>
-                  <td>Tiger Nixon</td>
-                  <td>System Architect</td>
-                  <td>Edinburgh</td>
-                  <td>61</td>
-                  <td>2011/04/25</td>
-                  <td>$320,800</td>
+
+                  <td><?php echo $row['id_transaksi'] ?></td>
+                  <td><?php echo $row['tanggalMasuk'] ?></td>
+                  <td><?php echo $row['harga'] ?></td>
+                  <td><img width="100px" height="100px" src="../view/rinda/struk/<?php echo $row['gambar'] ?>"></td>
+                  <td><?php echo $row['status'] ?></td>
+                  <td><?php echo $row['idPemesan'] ?></td>
+                  <td><?php echo $row['idHomestay'] ?></td>
+                  <td><a href="http://localhost/webdastub/controller/controller.php?fungsi=update&id=<?php echo $row['id_transaksi'] ?>&pilih=terima"><button class="btn btn-primary">Terima</button></a>
+                  <a href="http://localhost/webdastub/controller/controller.php?fungsi=update&id=<?php echo $row['id_transaksi'] ?>&pilih=tolak"><button class="btn btn-warning">Tolak</button></td></a>
                 </tr>
+              <?php } ?>
               </tbody>
             </table>
           </div>

@@ -195,16 +195,36 @@ class m_main extends model{
           $pemesan=$this->conn->query("SELECT nama, password,id_pemesan from pemesan where nama='$nama' and password='$pass'");
 
             header('Location: ../view/loginpemesan.html');
-        } else {
+        }
           $pemesan=$this->conn->query("SELECT id_pemesan,nama, password,id_pemesan from pemesan where nama='$nama' and password='$pass'");
 
           $result1=mysqli_num_rows($pemesan);
           $_SESSION['namaPemesan']=$nama;
           while ($row = $pemesan->fetch_assoc()){
             $_SESSION['id_pemesan']=$row['id_pemesan'];
-          }
+
         }
         return $result1;
+
+      }
+
+      public function selectpesanan(){
+          return $this->conn->query("SELECT * FROM transaksi");
+      }
+
+      public function updatepemesanan(){
+        $id=$_GET['id'];
+        $pilih=$_GET['pilih'];
+
+        if($pilih == "terima"){
+          return $this->conn->query("UPDATE transaksi SET status = 'diterima' WHERE id_transaksi='$id'");
+          echo "string";
+          ?><script>alert('Berhasil Input');window.history.go(-1)<?php
+        }  if($pilih == "tolak"){
+            return $this->conn->query("UPDATE transaksi SET status = 'ditolak' WHERE id_transaksi='$id'");
+            ?><script>alert('Behasil Input');window.history.go(-1)<?php
+
+          }
       }
 
     public function upload($nfoto,$sfoto,$tfoto,$pkgambar,$pkdeskripsi){
