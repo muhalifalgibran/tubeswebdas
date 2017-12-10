@@ -51,15 +51,16 @@
             <table>
             <tr>
               <td>QR CODE  :</td>
-              <td><img src="qrcode.png"></img></td>
-
-              <formaction="http://localhost/webdastub/controller/controller.php?fungsi=lunas&id=<?php echo $_GET['idBayar']; ?>" method="post" enctype="multipart/form-data">
+              <td><img src="../view/rinda/qrcode.png"></img></td>
+                <?php while($id=$nyo->fetch_assoc()){ ?>
+              <form method="post" action="http://localhost/webdastub/controller/controller.php?fungsi=lunas&id=<?php echo $id['id_transaksi']; }?>" enctype="multipart/form-data">
                 <td><input type="file" name="struk"></td>
                 </tr>
                 <tr>
                 <td><input type="submit" name="kirim" value="Kirim" class="btn btn-primary"></td>
                 </tr>
-              </form>
+                </form>
+
 
             </table>
 

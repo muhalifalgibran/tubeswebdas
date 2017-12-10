@@ -15,7 +15,12 @@
 
     <!-- Custom styles for this template -->
     <link href="css/shop-homepage.css" rel="stylesheet">
-
+    <style media="screen">
+      img{
+        width: 400px;
+        height: auto;
+      }
+    </style>
   </head>
 
   <body>
@@ -29,19 +34,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" >Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
+              <?php // while ($ini= $result->fetch_assoc()) { ?>
+
+            <?php// } ?>
             <li class="nav-item">
-              <a class="nav-link" >About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" >Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" >Contact</a>
+              <a class="nav-link" href="../view/index/carikamar.html">Cari Lagi?</a>
             </li>
           </ul>
         </div>
@@ -55,18 +52,17 @@
               <div class="container">
               <div class="card h-100">
                 <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
-                  <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                  </ol>
+
                   <div class="carousel-inner" role="listbox">
+
                     <div class="carousel-item active">
-                      <img class="d-block img-fluid" src="img/portfolio-2.jpg" alt="First slide">
+                      <?php while ($tampil=$gambar->fetch_assoc()) { ?>
+                      <img src="../view/daftarProperti/gambar/<?php echo $tampil['gambar'] ?>">
+                      <?php } ?>
                     </div>
                   </div>
                 </div>
-              <?php  while ($ini= $hasil->fetch_assoc()) {  ?>
+              <?php  while ($ini= $result->fetch_assoc()) { ?>
                 <div class="card-body">
                   <h4 class="card-title">
                     <a>Kenyamanan Fasilitas</a>
@@ -125,6 +121,10 @@
                   </h4>
                   <p class="card-text"><?php echo $ini['alamat'] ?></p>
                 </div>
+                      <tr>
+                        <td><a href="http://localhost/webdastub/controller/controller.php?fungsi=bayar&id=<?php echo $ini['id_deskripsi']?>" class="btn btn-warning"> LANJUT BAYAR </a></td>
+                      </tr>
+                </form>
               <?php } ?>
                 <div class="card-footer">
                   <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>

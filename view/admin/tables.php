@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Admin Dashboard</title>
+  <title>SB Admin - Start Bootstrap Template</title>
   <!-- Bootstrap core CSS-->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
@@ -40,7 +40,7 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="http://localhost/webdastub/controller/controller.php?fungsi=lihatPesanan">
+          <a class="nav-link" href="tables.html">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">Laporan Penjualan</span>
           </a>
@@ -132,19 +132,59 @@
         </li>
       </ul>
     </div>
-  </nav>
-  <div class="content-wrapper">
+  </nav>  <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
           <a href="#">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active">My Dashboard</li>
+        <li class="breadcrumb-item active">Tables</li>
       </ol>
-
-      <h1 class="breadcrumb"><p>WELCOME ADMIN!!</p></h1>
-
+      <!-- Example DataTables Card-->
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Data Table Example</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Id Tranaksi</th>
+                  <th>tanggal masuk</th>
+                  <th>harga</th>
+                  <th>gambar</th>
+                  <th>status</th>
+                  <th>id pemesan</th>
+                  <th>id homestay</th>
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                  <th>Id Tranaksi</th>
+                  <th>tanggal masuk</th>
+                  <th>harga</th>
+                  <th>gambar</th>
+                  <th>status</th>
+                  <th>id pemesan</th>
+                  <th>id homestay</th>
+                </tr>
+              </tfoot>
+              <tbody>
+                <tr>
+                  <td>Tiger Nixon</td>
+                  <td>System Architect</td>
+                  <td>Edinburgh</td>
+                  <td>61</td>
+                  <td>2011/04/25</td>
+                  <td>$320,800</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+      </div>
     </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
@@ -183,14 +223,12 @@
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Page level plugin JavaScript-->
-    <script src="vendor/chart.js/Chart.min.js"></script>
     <script src="vendor/datatables/jquery.dataTables.js"></script>
     <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
-    <script src="js/sb-admin-charts.min.js"></script>
   </div>
 </body>
 
