@@ -318,17 +318,15 @@ class m_main extends model{
           header ('location:../view/loginpenyedia.html');
         }
       }
-
     }
 
     public function feedback1(){
-        $sdm=$_POST['sdm'];
-        $idhome=$_POST['id'];
+        $sdm=$_POST['panjang'];
+      //  $idhome=$_POST['id'];
         $kd=$this->gen->generate_uuid();
 
-          return $fd=$this->conn->query("INSERT INTO feedback(kdFeedback,idHomestay,deskripsiFeedback)
-              VALUES('$kd','$idhome','$sdm')");
-
+          return $fd=$this->conn->query("INSERT INTO feedback(id_feedback,feedback,id_homestay)
+              VALUES('$kd','$sdm','')");
       }
 
     public function login(){
