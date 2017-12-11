@@ -131,7 +131,6 @@ class controller{
     }
     public function loginAdmin(){
       if ($_POST['name']=="admin"&&$_POST['pwd']=="admin") {
-        $this->model->tabelPendaftar();
         header('Location: ../view/admin/index.html');
       } else {
         ?><script>alert('Salah username dan password');window.history.go(-1)</script><?php

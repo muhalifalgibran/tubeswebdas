@@ -43,7 +43,7 @@
             <table>
             <tr>
               <td><img width="110px" height="110px" src="../view/rinda/qrcode.png"></img></td>
-              <td><a href="../">Mohon Maaf, Silahkan Klik untuk mencari lagi</a></td>
+              <td><a class="nav-link" href="http://localhost/webdastub/view/index/carikamar.html">Mohon Maaf, Silahkan Klik untuk mencari lagi</a></td>
             </tr>
 
             </table>
