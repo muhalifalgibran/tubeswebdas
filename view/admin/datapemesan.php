@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Admin Dashboard</title>
+  <title>SB Admin - Start Bootstrap Template</title>
   <!-- Bootstrap core CSS-->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
@@ -17,7 +17,10 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
 </head>
-
+<style>
+  .gambar{width ="100";
+      height = "100"}
+</style>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
@@ -28,7 +31,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="../view/admin/index.html">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Dashboard</span>
           </a>
@@ -40,7 +43,7 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="http://localhost/webdastub/controller/controller.php?fungsi=lihatPesanan">
+          <a class="nav-link" href="tables.html">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">Laporan Penjualan</span>
           </a>
@@ -52,7 +55,7 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-              <a href="datapenyedia.php">Data Penyedia</a>
+              <a href="navbar.html">Data Penyedia</a>
             </li>
             <li>
               <a href="cards.html">Data Pemesan</a>
@@ -132,19 +135,61 @@
         </li>
       </ul>
     </div>
-  </nav>
-  <div class="content-wrapper">
+  </nav>  <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
           <a href="#">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active">My Dashboard</li>
+        <li class="breadcrumb-item active">Tables</li>
       </ol>
+      <!-- Example DataTables Card-->
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Data Table Example</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Id Pemesan</th>
+                  <th>No Identitas</th>
+                  <th>Nama</th>
+                  <th>Alamat</th>
+                  <th>Umur</th>
+                  <th>Password</th>
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                  <th>Id Pemesan</th>
+                  <th>No Identitas</th>
+                  <th>Nama</th>
+                  <th>Alamat</th>
+                  <th>Umur</th>
+                  <th>Password</th>
+                </tr>
+              </tfoot>
+              <tbody>
+                <?php while($row = $dp->fetch_assoc()){
+                ?>
+                <tr>
 
-      <h1 class="breadcrumb"><p>WELCOME ADMIN!!</p></h1>
-
+                  <td><?php echo $row['id_pemesan'] ?></td>
+                  <td><?php echo $row['noidentitas'] ?></td>
+                  <td><?php echo $row['alamat'] ?></td>
+                  <td><?php echo $row['nama'] ?></td>
+                  <td><?php echo $row['password'] ?></td>
+                  <td><?php echo $row['umur'] ?></td>
+                </tr>
+              <?php } ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+      </div>
     </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
@@ -183,14 +228,12 @@
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Page level plugin JavaScript-->
-    <script src="vendor/chart.js/Chart.min.js"></script>
     <script src="vendor/datatables/jquery.dataTables.js"></script>
     <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
-    <script src="js/sb-admin-charts.min.js"></script>
   </div>
 </body>
 

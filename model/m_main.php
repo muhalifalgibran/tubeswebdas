@@ -129,6 +129,16 @@ class m_main extends model{
       // public function tabelPendaftar(){
       //
       // }
+
+
+      public function ldp(){
+        return $this->conn->query("SELECT * FROM penyedia");
+      }
+
+      public function dp(){
+        return $this->conn->query("SELECT * FROM pemesan");
+      }
+
       public function bayar(){
         $idtransaksi=$_GET['id'];
         $_SESSION['kdTr']=$idtransaksi;

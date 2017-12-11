@@ -55,14 +55,13 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-              <a href="../view/admin/navbar.php">Data Penyedia</a>
+              <a href="http://localhost/webdastub/controller/controller.php?fungsi=lihatDatPenyedia">Data Penyedia</a>
             </li>
             <li>
-              <a href="../view/admin/cards.php">Data Pemesan</a>
+              <a href="http://localhost/webdastub/controller/controller.php?fungsi=lihatDatPemesan">Data Pemesan</a>
             </li>
           </ul>
         </li>
-
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
