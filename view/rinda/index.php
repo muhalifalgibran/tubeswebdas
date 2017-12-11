@@ -95,9 +95,7 @@
                   </h4>
                   <h5>Rp.<?php echo $row['harga']?></h5>
                   <p class="card-text"><?php echo $row['deskripsi']?></p>
-                  <form class="" action="" method="post">
-                        <td><input type="submit" name="Sewa" value="Kirim" class="btn btn-primary"></td>
-                  </form>
+
                 </div>
                 <div class="card-footer">
                   <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>

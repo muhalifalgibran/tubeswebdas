@@ -125,13 +125,13 @@ class m_main extends model{
               $_SESSION['id_homestay']=$row['id_homestay'];
             }
 
-
       }
-      public function tabelPendaftar(){
-
-      }
+      // public function tabelPendaftar(){
+      //
+      // }
       public function bayar(){
         $idtransaksi=$_GET['id'];
+        $_SESSION['kdTr']=$idtransaksi;
         $gambar = $_FILES['struk']['name'];
         $tgambar = $_FILES['struk']['tmp_name'];
         $sfoto = $gambar;
@@ -159,11 +159,12 @@ class m_main extends model{
         return $yu;
       }
       public function pembayaran(){
+
           $pk=$_GET['id'];
           $harga=$_GET['hrg'];
           $idhomestay=$_SESSION['id_homestay'];
           $idpemesan=$_SESSION['id_pemesan'];
-          $this->conn->query("INSERT INTO transaksi(id_transaksi,  harga,status, idPemesan, idHomestay) VALUES ('$pk','$harga','PENDING','$idpemesan','$idhomestay')");
+          $this->conn->query("INSERT INTO transaksi(id_transaksi, harga,status, id_pemesan, idHomestay) VALUES ('$pk','$harga','PENDING','$idpemesan','$idhomestay')");
 
           return $this->conn->query("SELECT id_transaksi FROM transaksi where id_transaksi='$pk'");
 
@@ -215,16 +216,33 @@ class m_main extends model{
         if($pilih == "terima"){
           return $this->conn->query("UPDATE transaksi SET status = 'diterima' WHERE id_transaksi='$id'");
           echo "string";
-          ?><script>alert('Berhasil Input');window.history.go(-1)<?php
         }  if($pilih == "tolak"){
             return $this->conn->query("UPDATE transaksi SET status = 'ditolak' WHERE id_transaksi='$id'");
-            ?><script>alert('Behasil Input');window.history.go(-1)<?php
 
           }
       }
+    public function bukti1(){
+      $id=$_SESSION['kdTr'];
+      $pending="pending";
+      $gagal="gagal";
+
+        $maju=$this->conn->query("SELECT  status,nama FROM transaksi JOIN pemesan USING(id_pemesan) WHERE status = 'diterima' and id_transaksi='$id' ");
+        $maju2=$this->conn->query("SELECT status,nama FROM transaksi JOIN pemesan USING(id_pemesan) WHERE status = 'PENDING' and id_transaksi='$id' ");
+
+        $result1=mysqli_num_rows($maju);
+        $result2=mysqli_num_rows($maju2);
+
+      if ($result1>0) {
+          return $maju;
+      }elseif($result2>0){
+          return $pending;
+      }else{
+          return $gagal;
+      }
+
+    }
     public function upload($nfoto,$sfoto,$tfoto,$pkgambar,$pkdeskripsi){
       //$url = $error; // url di mana akan di kembalikan jika gagal upload
-
       if(isset($nfoto)){
 
         $sfoto = $sfoto;

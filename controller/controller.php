@@ -15,6 +15,7 @@ class controller{
         //header('location: /webdastub/view/register.html');
       }
       //header ('location: /model/model.php');
+
     }
 
     public function index(){
@@ -26,6 +27,17 @@ class controller{
         header('Location: ../view/index/carikamar.html');
       }else {
           ?><script>alert('Username dan Password tidak sinkron');window.history.go(-1)</script><?php
+      }
+    }
+    public function bukti(){
+      $eco=$this->model->bukti1();
+      if ($eco=="pending"){
+          include_once '../view/rinda/pending.php';
+      }elseif ($eco=="gagal") {
+          include_once '../view/rinda/cariulang.php';
+      }
+      else{
+          include_once '../view/rinda/bukti.php';
       }
     }
     public function pemesan(){
@@ -85,7 +97,7 @@ class controller{
     }
     function konfirmBayar(){
       $nyo=$this->model->pembayaran();
-      include_once '../view/rinda/konfirmPembayaran.php';
+     include_once '../view/rinda/konfirmPembayaran.php';
     }
     public function inputDataHomestay(){
         $oii=$this->model->deskripsiHomestay();

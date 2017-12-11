@@ -27,13 +27,6 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-
-            </li>
-          </ul>
-        </div>
       </div>
     </nav>
 
@@ -45,10 +38,16 @@
         <!-- /.col-lg-3 -->
 
         <div class="col-lg-9">
-
           <!-- <div class="row"> -->
-
-          <img width="1080" height="auto" src="thanks.png" alt="">
+          <?php while($row=$eco->fetch_assoc()){ ?>
+          <p>Terima kasih, <?php echo $row['nama']; ?> silahkan perlihatkan struk ini pada saat anda melakukan check in</p>
+        <?php } ?>
+            <table>
+            <tr>
+              <td><img width="110px" height="110px" src="../view/rinda/qrcode.png"></img></td>
+            </tr>
+            </table>
+            <img width="1080" height="auto" src="../view/rinda/lunas.jpg" alt="">
             <!-- <div class="col-lg-4 col-md-6 mb-4">
 
               <div class="card h-100">
@@ -67,7 +66,7 @@
 
           <!-- </div> -->
           <!-- /.row -->
-              <a href="http://localhost/webdastub/controller/controller.php?fungsi=bukti" type="button" class="btn btn-primary">Lihat Status</a>
+
         </div>
         <!-- /.col-lg-9 -->
 

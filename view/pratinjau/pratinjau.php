@@ -62,7 +62,7 @@
                     </div>
                   </div>
                 </div>
-              <?php  while ($ini= $result->fetch_assoc()) { ?>
+              <?php  while ($ini= $result->fetch_assoc()) { $_SESSION['id_homestay']= $ini['id_homestay']  ?>
                 <div class="card-body">
                   <h4 class="card-title">
                     <a>Kenyamanan Fasilitas</a>
