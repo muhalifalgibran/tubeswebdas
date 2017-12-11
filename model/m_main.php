@@ -126,6 +126,32 @@ class m_main extends model{
             }
 
       }
+
+       public function jumlahLunas(){
+         return $this->conn->query("SELECT COUNT(status) lunas FROM TRANSAKSI WHERE status = 'diterima'");
+       }
+
+       public function jumlahPending(){
+         return $this->conn->query("SELECT COUNT(status) pending FROM TRANSAKSI WHERE status = 'PENDING'");
+       }
+
+       public function jumlahDitolak(){
+
+         return $this->conn->query("SELECT COUNT(status) tolak FROM TRANSAKSI WHERE status = 'ditolak'");
+       }
+
+       public function jumlahPendapatan(){
+         return $this->conn->query("SELECT SUM(e.harga) total
+                                      FROM deskripsi e
+                                      JOIN profil USING(id_profil)
+                                      JOIN homestay USING(id_homestay)
+                                      JOIN transaksi USING(id_homestay)
+                                      WHERE status='diterima'");
+              }
+
+        public function jumlahKamarTersedia(){
+          return $this->conn->query("SELECT COUNT(id_homestay) kamar FROM homestay JOIN transaksi USING(id_homestay) WHERE status >any (SELECT status FROM transaksi WHERE status <> 'diterima')");
+                          }
       // public function tabelPendaftar(){
       //
       // }
@@ -147,7 +173,7 @@ class m_main extends model{
         $sfoto = $gambar;
         $tfoto = $tgambar;
         $file_upload=1;
-        $dir = "../view/rinda/struk/".$gambar;
+        $dir = "../view/rinda/struk/z.".$gambar;
       //  $loc=$dir.$nfoto;
         if($file_upload==1){
             move_uploaded_file($tgambar, $dir);
@@ -169,12 +195,11 @@ class m_main extends model{
         return $yu;
       }
       public function pembayaran(){
-
           $pk=$_GET['id'];
           $harga=$_GET['hrg'];
           $idhomestay=$_SESSION['id_homestay'];
           $idpemesan=$_SESSION['id_pemesan'];
-          $this->conn->query("INSERT INTO transaksi(id_transaksi, harga,status, id_pemesan, idHomestay) VALUES ('$pk','$harga','PENDING','$idpemesan','$idhomestay')");
+          $this->conn->query("INSERT INTO transaksi(id_transaksi, harga,status, id_pemesan, id_homestay) VALUES ('$pk','$harga','PENDING','$idpemesan','$idhomestay')");
 
           return $this->conn->query("SELECT id_transaksi FROM transaksi where id_transaksi='$pk'");
 
@@ -192,7 +217,7 @@ class m_main extends model{
         $cari = $_POST['search'];
         return $this->conn->query("SELECT id_deskripsi,nama_properti, deskripsi, harga
                                   FROM deskripsi JOIN profil USING(id_profil)
-                                  where kota like '%$cari%'
+                                  where kota like '%$cari%' OR nama_properti like '%$cari%'
                                   group by nama_properti");
               }
       public function loginPemesan(){

@@ -52,8 +52,8 @@
             <tr>
               <td>QR CODE  :</td>
               <td><img src="../view/rinda/qrcode.png"></img></td>
-                <?php while($id=$nyo->fetch_assoc()) { ?>
-              <form method="post" action="http://localhost/webdastub/controller/controller.php?fungsi=lunas&id=<?php echo $id['id_transaksi']; }?>" enctype="multipart/form-data">
+                <?php ?>
+              <form method="post" action="http://localhost/webdastub/controller/controller.php?fungsi=lunas&id=<?php while($id=$nyo->fetch_assoc()) { echo $id['id_transaksi']; }?>" enctype="multipart/form-data">
                 <td><input type="file" name="struk"></td>
                 </tr>
                 <tr>

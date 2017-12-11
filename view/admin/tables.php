@@ -37,13 +37,13 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="../view/admin/charts.php">
+          <a class="nav-link" href="http://localhost/webdastub/controller/controller.php?fungsi=laporanPenjualan">
             <i class="fa fa-fw fa-area-chart"></i>
             <span class="nav-link-text">Laporan Penjualan</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="../view/admin/tables.php">
+          <a class="nav-link" href="http://localhost/webdastub/controller/controller.php?fungsi=lihatPesanan">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">Daftar Pesanan</span>
           </a>
@@ -77,10 +77,6 @@
               </span>
             </div>
           </form>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
         </li>
       </ul>
     </div>
@@ -131,10 +127,10 @@
                   <td><?php echo $row['id_transaksi'] ?></td>
                   <td><?php echo $row['tanggalMasuk'] ?></td>
                   <td><?php echo $row['harga'] ?></td>
-                  <td><img width="100px" height="100px" src="../view/rinda/struk/<?php echo $row['gambar'] ?>"></td>
+                  <td><img width="100px" height="100px" src="../view/rinda/struk/z/<?php echo $row['gambar'] ?>"></td>
                   <td><?php echo $row['status'] ?></td>
                   <td><?php echo $row['id_pemesan'] ?></td>
-                  <td><?php echo $row['idHomestay'] ?></td>
+                  <td><?php echo $row['id_homestay'] ?></td>
                   <td><a href="http://localhost/webdastub/controller/controller.php?fungsi=update&id=<?php echo $row['id_transaksi'] ?>&pilih=terima"><button class="btn btn-primary">Terima</button></a>
                   <a href="http://localhost/webdastub/controller/controller.php?fungsi=update&id=<?php echo $row['id_transaksi'] ?>&pilih=tolak"><button class="btn btn-warning">Tolak</button></td></a>
                 </tr>

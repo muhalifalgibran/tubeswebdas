@@ -97,6 +97,16 @@ class controller{
         include_once '../view/admin/datapenyedia.php';
     }
 
+
+    public function laporanPenjualan(){
+      $lunas=$this->model->jumlahLunas();
+      $pending=$this->model->jumlahPending();
+      $tolak=$this->model->jumlahDitolak();
+      $jpendapatan=$this->model->jumlahPendapatan();
+      $jumlahKamar=$this->model->jumlahKamarTersedia();
+      include_once '../view/admin/charts.php';
+    }
+
     public function lihatDatPemesan(){
       $dp=$this->model->dp();
         include_once '../view/admin/datapemesan.php';
@@ -136,8 +146,6 @@ class controller{
       header('Location: ../view/admin/login.html');
     }
 }
-
-
 
 $controller = new controller();
 
