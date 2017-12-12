@@ -2,6 +2,7 @@
 include_once "C:/xampp/htdocs/webdastub/model/m_main.php";
 class controller{
     private $model;
+    private $b;
     public function __construct(){
       $this->model = new m_main();
     }
@@ -57,10 +58,19 @@ class controller{
           echo "gagal";
         }
     }
+    public function daftarPenyedia(){
+      $result =  $this->model->daftarTersedia();
+        include_once '../view/index/daftarTersedia.php';
+    }
+    public function hapusHomestay(){
+      $this->model->hapus();
+      $this->b = new controller();
+      $this->b->daftarPenyedia();
+    }
     public function loginAplikasi(){
       $result=$this->model->login();
       if ($result>0) {
-          header("Location: ../view/daftarProperti/dasar.html");
+          header("Location: ../view/index/penyedia.php");
       //session_start();
       }else {
           ?><script>alert('Harap semua diisi dengan benar');window.history.go(-1)</script><?php
@@ -122,12 +132,8 @@ class controller{
     }
     public function inputDataHomestay(){
         $oii=$this->model->deskripsiHomestay();
-        if ($oii>0) {
-            header("Location: ../view/daftarProperti/dasar.html");
+            header("Location: ../view/index/index.html");
         //session_start();
-        }else{
-            ?><script>alert('Harap semua diisi dengan benar');window.history.go(-1)</script><?php
-        }
     }
     public function loginAdmin(){
       if ($_POST['name']=="admin"&&$_POST['pwd']=="admin") {

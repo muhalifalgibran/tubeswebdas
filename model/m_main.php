@@ -240,6 +240,34 @@ class m_main extends model{
 
       }
 
+      public function hapus(){
+        $id_penyedia=$_GET['id'];
+          $yo=$this->conn->query("SELECT id_homestay,id_profil,id_deskripsi,id_gambar
+                              FROM homestay JOIN profil USING(id_homestay)
+                              JOIN deskripsi USING(id_profil)
+                              JOIN gambar USING(id_deskripsi)
+                              WHERE id_penyedia = '$id_penyedia'");
+          while($row=$yo->fetch_assoc()){
+            $idhomy = $row['id_homestay'];
+            $idprof = $row['id_profil'];
+            $iddesk = $row['id_deskripsi'];
+            $idgamb= $row['id_gambar'];
+          }
+
+          $this->conn->query("DELETE FROM homestay where id_homestay = '$idhomy'");
+          $this->conn->query("DELETE FROM profil where id_homestay = '$idprof'");
+          $this->conn->query("DELETE FROM deskripsi where id_homestay = '$iddesk'");
+          $this->conn->query("DELETE FROM gambar where id_homestay = '$idgamb'");
+      }
+
+      public function daftarTersedia(){
+        $idpenyedia= $_SESSION['id_penyedia'];
+        return $this->conn->query("SELECT id_penyedia,id_homestay, nama_properti, e.harga hrg , kota,  tanggalcheckin
+                            FROM deskripsi e JOIN profil USING(id_profil)
+                            JOIN homestay USING(id_homestay)
+                            WHERE id_penyedia = '$idpenyedia'");
+      }
+
       public function selectpesanan(){
           return $this->conn->query("SELECT * FROM transaksi");
       }
@@ -257,6 +285,11 @@ class m_main extends model{
           }
       }
     public function bukti1(){
+      //$id=$_SESSION['kdTr'];
+      if(empty($_SESSION['kdTr'])){
+        echo "<script>alert('Anda Belum Memesan');window.history.go(-1)</script>";
+        //exit();
+      }else {
       $id=$_SESSION['kdTr'];
       $pending="pending";
       $gagal="gagal";
@@ -274,7 +307,7 @@ class m_main extends model{
       }else{
           return $gagal;
       }
-
+        }
     }
     public function upload($nfoto,$sfoto,$tfoto,$pkgambar,$pkdeskripsi){
       //$url = $error; // url di mana akan di kembalikan jika gagal upload
