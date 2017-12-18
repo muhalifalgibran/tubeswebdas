@@ -136,7 +136,6 @@ class m_main extends model{
        }
 
        public function jumlahDitolak(){
-
          return $this->conn->query("SELECT COUNT(status) tolak FROM TRANSAKSI WHERE status = 'ditolak'");
        }
 
@@ -150,7 +149,9 @@ class m_main extends model{
               }
 
         public function jumlahKamarTersedia(){
-          return $this->conn->query("SELECT COUNT(id_homestay) kamar FROM homestay JOIN transaksi USING(id_homestay) WHERE status >any (SELECT status FROM transaksi WHERE status <> 'diterima')");
+          return $this->conn->query("SELECT COUNT(id_homestay) kamar FROM homestay
+                                      JOIN transaksi USING(id_homestay)
+                                       WHERE status >any (SELECT status FROM transaksi WHERE status <> 'diterima')");
                           }
       // public function tabelPendaftar(){
       //

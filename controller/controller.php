@@ -132,7 +132,9 @@ class controller{
     }
     public function inputDataHomestay(){
         $oii=$this->model->deskripsiHomestay();
+        if ($oii) {
             header("Location: ../view/index/index.html");
+        }
         //session_start();
     }
     public function loginAdmin(){
@@ -144,6 +146,7 @@ class controller{
     }
 
     public function lunas(){
+
       $this->model->bayar();
         header('Location: ../view/rinda/terimakasih.html');
     }
