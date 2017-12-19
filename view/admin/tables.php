@@ -67,9 +67,7 @@
         <li class="nav-item">
           <form class="form-inline my-2 my-lg-0 mr-lg-2">
             <div class="input-group">
-              <form action="" method="post">
-                    <input class="form-control" type="text" name="cari" placeholder="Search for...">
-              </form>
+              <input class="form-control" type="text" name="cari" placeholder="Searchs for...">
               <span class="input-group-btn">
                 <button class="btn btn-primary" type="button">
                   <i class="fa fa-search"></i>
@@ -92,13 +90,13 @@
       <!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Data Table Example</div>
+          <i class="fa fa-table"></i> Data Table</div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                  <th>Id Tranaksi</th>
+                  <th>Id Transaksi</th>
                   <th>tanggal masuk</th>
                   <th>harga</th>
                   <th>gambar</th>

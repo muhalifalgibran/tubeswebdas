@@ -85,11 +85,11 @@ class m_main extends model{
         VALUES ('$pkdeskripsi','$nama_properti','$harga_properti','$deskripsi','$hal_sekitar','$this->rekom','$akses','$pkprofil','$checkin')");
 
         $this->main = new m_main();
-
          for($i=0;$i<count($gambar);$i++){
             $pkgambar=$this->gen->generate_uuid();
   	         $this->main->upload($gambar[$i],$sgambar[$i],$tgambar[$i],$pkgambar,$pkdeskripsi);
-           }
+            }
+           header('location: ../view/index/penyedia.php');
          }
        }
 
@@ -100,9 +100,9 @@ class m_main extends model{
            $alamat = $_POST['alamat'];
            $umur = $_POST['umur'];
            $password = $_POST['pwd'];
-           $oi=$this->gen->generate_uuid();
 
-           if (strlen($_POST["pwd"]) <= 8) {
+           $oi=$this->gen->generate_uuid();
+           if (strlen($_POST["pwd"]) < 8) {
               $passwordErr = "harus 8 karakter";
             }
             else{
@@ -112,19 +112,16 @@ class m_main extends model{
             }
          }
        }
-
       public function pratin(){
         $pratinjau=$_GET['namaProperti'];
-        $query=$this->conn->query("SELECT id_homestay,id_deskripsi,rekomendasi, jenisHomestay,nama_properti,aksesibilitas,deskripsi,
+        return $this->conn->query("SELECT id_homestay,id_deskripsi,rekomendasi, jenisHomestay,nama_properti,aksesibilitas,deskripsi,
                                     hal_sekitar,tanggalCheckin,ranjang, alamat
                                     FROM deskripsi JOIN profil USING(id_profil)
 				                            JOIN homestay USING(id_homestay)
                                     WHERE id_deskripsi='$pratinjau'");
-                                    return $query;
             while ($row = $query->fetch_assoc()){
               $_SESSION['id_homestay']=$row['id_homestay'];
             }
-
       }
 
        public function jumlahLunas(){
@@ -174,7 +171,7 @@ class m_main extends model{
         $sfoto = $gambar;
         $tfoto = $tgambar;
         $file_upload=1;
-        $dir = "../view/rinda/struk/z.".$gambar;
+        $dir = "../view/rinda/struk/z/".$gambar;
       //  $loc=$dir.$nfoto;
         if($file_upload==1){
             move_uploaded_file($tgambar, $dir);
@@ -270,7 +267,7 @@ class m_main extends model{
       }
 
       public function selectpesanan(){
-          return $this->conn->query("SELECT * FROM transaksi");
+          return $this->conn->query("SELECT * FROM transaksi ORDER BY tanggalMasuk DESC");
       }
 
       public function updatepemesanan(){
@@ -367,8 +364,8 @@ class m_main extends model{
       $nama=$_POST['nama'];
       $pass=$_POST['password'];
       $penyedia=$this->conn->query("SELECT nama, password,id_penyedia from penyedia where nama='$nama' and password='$pass'");
-
       $result=mysqli_num_rows($penyedia);
+
       session_start();
       while ($row = $penyedia->fetch_assoc()) {
         $_SESSION['id_penyedia']=$row['id_penyedia'];

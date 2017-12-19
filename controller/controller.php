@@ -132,10 +132,6 @@ class controller{
     }
     public function inputDataHomestay(){
         $oii=$this->model->deskripsiHomestay();
-        if ($oii) {
-            header("Location: ../view/index/index.html");
-        }
-        //session_start();
     }
     public function loginAdmin(){
       if ($_POST['name']=="admin"&&$_POST['pwd']=="admin") {
@@ -143,7 +139,7 @@ class controller{
       } else {
         ?><script>alert('Salah username dan password');window.history.go(-1)</script><?php
       }
-    }
+    } 
 
     public function lunas(){
 
